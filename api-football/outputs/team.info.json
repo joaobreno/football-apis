@@ -1,0 +1,29 @@
+{
+  "get": "teams",
+  "parameters": { "id": "6" },
+  "errors": [],
+  "results": 1,
+  "paging": { "current": 1, "total": 1 },
+  "response": [
+    {
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "code": "BRA",
+        "country": "Brazil",
+        "founded": 1914,
+        "national": true,
+        "logo": "https:\/\/media.api-sports.io\/football\/teams\/6.png"
+      },
+      "venue": {
+        "id": 11531,
+        "name": "Neo Qu\u00edmica Arena",
+        "address": "Avenida Miguel In\u00e1cio Curi, 111, Vila Carmosina, Itaquera",
+        "city": "S\u00e3o Paulo, S\u00e3o Paulo",
+        "capacity": 49205,
+        "surface": "grass",
+        "image": "https:\/\/media.api-sports.io\/football\/venues\/11531.png"
+      }
+    }
+  ]
+}

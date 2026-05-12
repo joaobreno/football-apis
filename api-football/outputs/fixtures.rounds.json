@@ -1,0 +1,17 @@
+{
+  "get": "fixtures\/rounds",
+  "parameters": { "season": "2022", "league": "1" },
+  "errors": [],
+  "results": 8,
+  "paging": { "current": 1, "total": 1 },
+  "response": [
+    "Group Stage - 1",
+    "Group Stage - 2",
+    "Group Stage - 3",
+    "Round of 16",
+    "Quarter-finals",
+    "Semi-finals",
+    "3rd Place Final",
+    "Final"
+  ]
+}
