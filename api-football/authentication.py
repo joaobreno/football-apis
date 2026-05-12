@@ -21,6 +21,12 @@ from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+from env_loader import load_local_env
+
+# Carregar `api-football/.env` antes de qualquer leitura de `os.environ` (ex.: notebooks
+# que imprimem `API_FOOTBALL_BASE_URL` logo após `import authentication`).
+load_local_env()
+
 DEFAULT_BASE_URL = "https://www.example.com"
 _ENV_KEYS = ("API_FOOTBALL_KEY", "APISPORTS_KEY", "X_APISPORTS_KEY")
 _DEFAULT_TIMEOUT_S = 30.0
@@ -122,9 +128,6 @@ def verify_api_key(
     errs = data.get("errors")
     ok = status == 200 and not (errs or [])
     return ApiKeyVerification(ok=ok, http_status=status, data=data)
-
-
-from env_loader import load_local_env  # noqa: E402
 
 
 if __name__ == "__main__":
