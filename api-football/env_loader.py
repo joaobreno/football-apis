@@ -1,4 +1,8 @@
-"""Carrega ``api-football/.env`` para ``os.environ`` (sem sobrescrever o que já existe)."""
+"""Carrega ``api-football/.env`` para ``os.environ`` (sem sobrescrever o que já existe).
+
+``_loaded`` só passa a ``True`` depois de ler um ficheiro ``.env`` existente; se o ficheiro
+ainda não existir na primeira tentativa, chamadas seguintes voltam a tentar.
+"""
 
 from __future__ import annotations
 
@@ -13,8 +17,8 @@ def load_local_env() -> None:
     global _loaded
     if _loaded:
         return
-    _loaded = True
     if not DOTENV_PATH.is_file():
+        # Não marcar `_loaded`: assim uma `.env` criada mais tarde (ou cwd corrigido) ainda é lida.
         return
     text = DOTENV_PATH.read_text(encoding="utf-8-sig")
     for raw_line in text.splitlines():
@@ -33,3 +37,4 @@ def load_local_env() -> None:
         if len(val) >= 2 and val[0] == val[-1] and val[0] in "\"'":
             val = val[1:-1]
         os.environ.setdefault(key, val)
+    _loaded = True
